@@ -1,6 +1,6 @@
 const register = (req, res) => {
 
-    res.json({ ok: 'register' })
+    res.json({ ok: 'register'})
 
 }
 

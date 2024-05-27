@@ -6,6 +6,8 @@ const body = require('express-validator').body
 
 const formValidation = require('../middlewares/form.validation')
 
+const hashing = require('../helpers/hashing')
+
 router.post('/register',[
     
     body('email', 'Formato de Email erroneo').trim().isEmail().normalizeEmail()],
@@ -15,6 +17,8 @@ router.post('/register',[
     body("password", 'Formato de contraseña erroneo'),
 
     formValidation,
+
+    hashing,
     
     register)
 
@@ -28,6 +32,8 @@ router.post('/login',[
     body("password", 'Formato de contraseña erroneo'),
     
     formValidation,
+
+    hashing,
     
     login)
 
