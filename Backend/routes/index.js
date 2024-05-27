@@ -4,7 +4,7 @@ const { login, register } = require('../controllers/auth')
 
 const body = require('express-validator').body
 
-const formValidation = require('../middlewares/form.validation')
+const formValidation = require('../middlewares/form_validation')
 
 const hashing = require('../helpers/hashing')
 
@@ -32,8 +32,6 @@ router.post('/login',[
     body("password", 'Formato de contraseña erroneo'),
     
     formValidation,
-
-    hashing,
     
     login)
 
