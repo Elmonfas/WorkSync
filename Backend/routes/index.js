@@ -1,12 +1,14 @@
 const router = require('express').Router()
 
-const { login, register } = require('../controllers/auth')
+const { login, register, infouser } = require('../controllers/auth')
 
 const body = require('express-validator').body
 
 const formValidation = require('../middlewares/form_validation')
 
 const hashing = require('../helpers/hashing')
+
+const auth_token = require('../middlewares/auth_token')
 
 router.post('/register',[
     
@@ -34,5 +36,8 @@ router.post('/login',[
     formValidation,
     
     login)
+
+
+router.get('/protect',auth_token, infouser)    
 
 module.exports = router
