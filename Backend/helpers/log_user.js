@@ -14,26 +14,17 @@ async function log_user(user) {
     
             const db_password = db_email[0][0].Password
 
-            console.log(db_password)
-            console.log(password)
-
             if(await bcrypt.compare(password, db_password) == true){
-
-                console.log('Inicio de sesion correcto')
             
                 return true
 
             }else{
-            
-                console.log('Rellena bien el formulario')
             
                 return false
             
             }
     
         } else {
-    
-            console.log('El usuario no existe')
     
             return false
     

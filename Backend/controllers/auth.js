@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 
 const env = require('dotenv')
 
-env.config({path : './env/.env'})
+env.config({path : '.env'})
 
 const {generate_token, generate_key_token} = require('../helpers/gen_token')
 
@@ -62,11 +62,6 @@ const login = async (req, res) => {
 
         generate_key_token(email, res)
 
-        // res.cookie("token", token, {
-        //     httpOnly : true,
-        //     secure : !(process.env.modo === "developer")
-        // })
-
         res.status(200).json({ msg: "Usuario logueado correctamente","token" : token})
 
     } else {
@@ -97,16 +92,8 @@ const infouser = async (req, res) => {
 const lock = async (req, res) => {
 
     try {
-        
-        const key_token_cookie = req.cookies.key_token
 
-        if(!key_token_cookie) 
-            
-            throw new Error('No existe el token')
-
-        const {email} = jwt.verify(key_token_cookie, process.env.key_token)
-
-        const token = generate_token(email)
+        const token = generate_token(req.email)
 
         res.status(200).json({ msg: "Token refrescado correctamente","token" : token})
 
@@ -114,7 +101,7 @@ const lock = async (req, res) => {
 
         console.log(e)
 
-        return res.status(401).json({ error : e.message})
+        return res.status(500).json({ error : "Error de servidor "})
         
     }
 
