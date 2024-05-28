@@ -19,4 +19,26 @@ const generate_token = (email) => {
     }
 }
 
-module.exports = generate_token
+const generate_key_token = (email, res) => {
+
+    const expiresIn = 60 * 60 * 24 * 30
+
+    try {
+
+        const key_token = jwt.sign({email}, process.env.key_token, {expiresIn : expiresIn})
+
+        res.cookie("key_token", key_token, {
+            httpOnly: true,
+            secure: !(process.env.modo === "dev"),
+            expires : new Date(Date.now() + expiresIn * 1000)
+        })
+        
+    } catch (e) {
+
+        console.log(e)
+        
+    }
+
+}
+
+module.exports = {generate_token, generate_key_token}

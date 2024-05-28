@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { login, register, infouser } = require('../controllers/auth')
+const { login, register, infouser, lock, logout } = require('../controllers/auth')
 
 const body = require('express-validator').body
 
@@ -38,6 +38,10 @@ router.post('/login',[
     login)
 
 
-router.get('/protect',auth_token, infouser)    
+router.get('/protect',auth_token, infouser)  
+
+router.get('/lock', lock)
+
+router.get('/logout', logout)
 
 module.exports = router

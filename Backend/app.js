@@ -3,10 +3,12 @@ const dotenv = require('dotenv')
 dotenv.config({path : '.env'})
 const pool = require('../Backend/database/con')
 const router = require('./routes/index')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/', router)
