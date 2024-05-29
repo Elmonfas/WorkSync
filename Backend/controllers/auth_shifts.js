@@ -39,5 +39,58 @@ const create_shift = async (req, res) => {
     }
 
 }
- 
-module.exports = { get_shifts, create_shift }
+
+const delete_shift = async (req, res) => {
+
+    try {
+
+        const {id} = req.params
+
+        const shift = await con.query('SELECT * FROM shifts WHERE shift_id = ?', [id])
+
+        if ( shift[0][0].user_id == req.uid ) { 
+
+            await con.query('DELETE FROM shifts WHERE shift_id = ?', [id])
+
+            return res.status(200).json({msg : "Turno borrado correctamente", shift : shift[0] })
+
+        }else return res.status(401).json({ error : "Este tuerno no es tuyo, no puedes borrarlo "})
+        
+    } catch (e) {
+
+        console.log(e)
+
+        res.status(500).json({ error : "Error de servidor"})
+    }
+
+}
+
+const update_shift = async (req, res) => {
+
+    try {
+
+        const {id} = req.params
+
+        const {day, start_time, end_time} = req.body
+
+        const shift = await con.query('SELECT * FROM shifts WHERE shift_id = ?', [id])
+
+        if ( shift[0][0].user_id == req.uid ) { 
+
+            await con.query('UPDATE shifts SET day = ?, start_time = ?, end_time = ? WHERE shift_id = ?', [day, start_time, end_time, id])
+
+            return res.status(202).json({msg : "Turno actualizado correctamente", shift : shift[0] })
+
+        }else return res.status(401).json({ error : "Este tuerno no es tuyo, no puedes borrarlo "})
+        
+    } catch (e) {
+
+        console.log(e)
+
+        res.status(500).json({ error : "Error de servidor"})
+    }
+
+}
+
+
+module.exports = { get_shifts, create_shift, delete_shift, update_shift }

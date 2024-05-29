@@ -12,6 +12,8 @@ const router = require('./routes/index')
 
 const router_shifts = require('./routes/shifts')
 
+const router_requests = require('./routes/requests')
+
 const cookieParser = require('cookie-parser')
 
 const morgan = require('morgan')
@@ -31,6 +33,9 @@ app.use(morgan('dev'))
 app.use('/', router)
 
 app.use('/', router_shifts)
+
+app.use('/', router_requests)
+
 
 
 

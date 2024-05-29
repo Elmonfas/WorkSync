@@ -25,6 +25,16 @@ const body_shifts_validator = [
     formValidation
 ]
 
+const body_requests_validator = [
+    
+    body('request_date', 'Formato de fecha erroneo').trim().notEmpty(),
+    
+    body('requested_day', 'Formato de fecha deseada erroneo').trim().notEmpty(),
+
+    body("message", 'Formato de mensaje erroneo').trim().notEmpty().isLength({min : 10}),
+    
+    formValidation
+]
 
 const body_form_validator = [
     
@@ -37,4 +47,4 @@ const body_form_validator = [
         formValidation
     ]
 
-module.exports = {body_form_validator, body_shifts_validator}
+module.exports = {body_form_validator, body_shifts_validator, body_requests_validator}
