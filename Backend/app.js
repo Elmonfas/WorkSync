@@ -18,9 +18,27 @@ const cookieParser = require('cookie-parser')
 
 const morgan = require('morgan')
 
+const cors = require('cors')
+
 const app = express()
 
+const whitelist = [process.env.origin]
 
+app.use(cors({
+     
+    origin: function(origin, callback){
+    
+        if(whitelist.includes(origin)){
+    
+            return callback(null, origin)
+    
+        }
+
+        return callback("🚫 Error de cors, el dominio : " + origin + " No esta autorizado 🚫")
+
+    }
+
+}))
 
 app.use(express.json())
 
