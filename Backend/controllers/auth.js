@@ -30,7 +30,11 @@ const register = async (req, res) => {
         
         if (added) {
 
-            res.status(200).json({ msg : "Usuario añadido correctamente"})
+            const token = generate_token(added)
+
+            generate_key_token(added, res)
+    
+            res.status(201).json({ msg: "Usuario creado correctamente","token" : token})
 
         } else {
 

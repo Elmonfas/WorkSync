@@ -14,6 +14,17 @@ const formValidation = (req, res ,next) => {
     next()
 }
 
+const body_shifts_validator = [
+    
+    body('day', 'Formato de fecha erroneo').trim().notEmpty(),
+    
+    body('start_time', 'Formato de hora de entrada erroneo').trim().notEmpty(),
+
+    body("end_time", 'Formato de hora de salida erroneo').trim().notEmpty(),
+    
+    formValidation
+]
+
 
 const body_form_validator = [
     
@@ -26,4 +37,4 @@ const body_form_validator = [
         formValidation
     ]
 
-module.exports = body_form_validator
+module.exports = {body_form_validator, body_shifts_validator}

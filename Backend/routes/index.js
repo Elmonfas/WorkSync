@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const { login, register, infouser, lock, logout } = require('../controllers/auth')
 
-const body_form_validator = require('../middlewares/validation_manager')
+const {body_form_validator} = require('../middlewares/validation_manager')
 
 const hashing = require('../helpers/hashing')
 

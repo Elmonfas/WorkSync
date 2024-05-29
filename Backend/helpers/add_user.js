@@ -12,7 +12,9 @@ async function add_user(user){
 
             await con.query('insert into Users (nombre, apellido, email, password) values (?, ?, ?, ?)', [name, surname, email, password])
 
-            return true
+            const uid = await con.query('SELECT ID FROM Users WHERE Email = ?', [email])
+
+            return uid[0][0].ID
 
         }else {
 
