@@ -14,9 +14,9 @@ const auth_key_token = (req ,res ,next) => {
             
             throw new Error('No existe el token')
 
-        const {email} = jwt.verify(key_token_cookie, process.env.key_token)
+        const {uid} = jwt.verify(key_token_cookie, process.env.key_token)
 
-        req.email = email
+        req.uid = uid
 
         next()
         

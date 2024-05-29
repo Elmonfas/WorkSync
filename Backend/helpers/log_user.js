@@ -15,8 +15,10 @@ async function log_user(user) {
             const db_password = db_email[0][0].Password
 
             if(await bcrypt.compare(password, db_password) == true){
-            
-                return true
+
+                const uid = await con.query('SELECT ID FROM Users WHERE Email = ?', [email])
+
+                return uid[0][0].ID
 
             }else{
             

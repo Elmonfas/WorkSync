@@ -4,13 +4,13 @@ env.config({path : '.env'})
 
 const jwt = require('jsonwebtoken')
 
-const generate_token = (email) => {
+const generate_token = (uid) => {
 
     const expiresIn = 60 * 10
 
     try {
 
-       return jwt.sign({email}, process.env.jwt_secret, {expiresIn : expiresIn})
+       return jwt.sign({uid}, process.env.jwt_secret, {expiresIn : expiresIn})
         
     } catch (e) {
 
@@ -19,13 +19,13 @@ const generate_token = (email) => {
     }
 }
 
-const generate_key_token = (email, res) => {
+const generate_key_token = (uid, res) => {
 
     const expiresIn = 60 * 60 * 24 * 30
 
     try {
 
-        const key_token = jwt.sign({email}, process.env.key_token, {expiresIn : expiresIn})
+        const key_token = jwt.sign({uid}, process.env.key_token, {expiresIn : expiresIn})
 
         res.cookie("key_token", key_token, {
             httpOnly: true,

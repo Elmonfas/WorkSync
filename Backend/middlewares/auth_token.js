@@ -16,9 +16,9 @@ const auth_token = (req, res, next) => {
 
         token = token.split(' ')[1]
         
-        const {email} = jwt.verify(token, process.env.jwt_secret)
+        const {uid} = jwt.verify(token, process.env.jwt_secret)
 
-        req.email = email
+        req.uid = uid
 
         next()
         

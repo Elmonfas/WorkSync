@@ -58,9 +58,9 @@ const login = async (req, res) => {
 
     if (logged) {
         
-        const token = generate_token(email)
+        const token = generate_token(logged)
 
-        generate_key_token(email, res)
+        generate_key_token(logged, res)
 
         res.status(200).json({ msg: "Usuario logueado correctamente","token" : token})
 
@@ -76,7 +76,7 @@ const infouser = async (req, res) => {
 
     try {
 
-        const user = await find_user(req.email)
+        const user = await find_user(req.uid)
 
         return res.status(200).json({ user : user })
         
@@ -93,7 +93,7 @@ const lock = async (req, res) => {
 
     try {
 
-        const token = generate_token(req.email)
+        const token = generate_token(req.uid)
 
         res.status(200).json({ msg: "Token refrescado correctamente","token" : token})
 
