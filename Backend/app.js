@@ -28,7 +28,7 @@ app.use(cors({
      
     origin: function(origin, callback){
     
-        if(whitelist.includes(origin)){
+        if(!origin || whitelist.includes(origin)){
     
             return callback(null, origin)
     
