@@ -36,7 +36,8 @@ app.use(cors({
 
         return callback("🚫 Error de cors, el dominio : " + origin + " No esta autorizado 🚫")
 
-    }
+    },
+    credentials : true
 
 }))
 
