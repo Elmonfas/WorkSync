@@ -1,7 +1,7 @@
 <template>
-    <q-page>
-        <h3>welcome to dashboard</h3>
-        <q-btn @click="create_shift">Add shift</q-btn>
+    <q-page class="bg-[#001220] text-white flex justify-center items-center flex-col ">
+        <h3 class="mb-5 uppercase">welcome to dashboard</h3>
+        <q-btn color="red" @click="create_shift">Add shift</q-btn>
     </q-page>
 </template>
 

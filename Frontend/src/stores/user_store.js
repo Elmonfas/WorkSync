@@ -8,15 +8,14 @@ export const useUserStore = defineStore('user', () => {
 
     const token = ref(null)
 
-    const access = async () => {
-
+    const access = async (email, password) => {
+  
         try {
       
           const res = await api.post('/login', {
-            
-            email : "jose@gmail.com",
-            
-            password : "jose123"
+
+            email,
+            password
           
           })
       
@@ -27,10 +26,12 @@ export const useUserStore = defineStore('user', () => {
           localStorage.setItem("user", "activo papi 😎")
 
           refresh_token()
+
+          return res.data.msg
           
         } catch (e) {
       
-          console.log(e)
+          return e.response.data.error
           
         }
       

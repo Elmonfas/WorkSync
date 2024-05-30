@@ -66,11 +66,11 @@ const login = async (req, res) => {
 
         generate_key_token(logged, res)
 
-        res.status(200).json({ msg: "Usuario logueado correctamente","token" : token})
+        res.status(200).json({ msg: "User logged successfully","token" : token})
 
     } else {
         
-        res.status(403).json({ error: "El usuario que intenta loguear no existe o las credenciales son incorrectas" })
+        res.status(403).json({ error: "Invalid user or wrong crendetials" })
     
     }
 }
