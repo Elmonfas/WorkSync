@@ -22,10 +22,7 @@
             type="text"
             label="Insert Name"
             :rules="[
-              (val) => (val && val.length > 0) || 'Type your name',
-              (val) =>
-                /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(val) ||
-                'Invalid email format',
+              (val) => (val && val.length > 0) || 'Type your name'
             ]"
           ></q-input>
 
@@ -34,10 +31,7 @@
             type="text"
             label="Insert Surname"
             :rules="[
-              (val) => (val && val.length > 0) || 'Type ur surname',
-              (val) =>
-                /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(val) ||
-                'Invalid email format',
+              (val) => (val && val.length > 0) || 'Type ur surname'
             ]"
           ></q-input>
 
@@ -64,8 +58,11 @@
           ></q-input>
 
 
+
+
+
       <div>
-          <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#1F3A93] rounded-lg hover:bg-[#1F3A93] transition-all">Login</button>
+          <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#1F3A93] rounded-lg hover:bg-[#1F3A93] mt-3 transition-all">CREATE ACCOUNT</button>
       </div>
 
       <p class="text-center mt-[1em]">Already have an account ? <a class="text-blue-500 underline pounter" href="/login">Login</a></p>
@@ -90,17 +87,19 @@ import {toast} from 'vue3-toastify'
 const router = useRouter()
 const userStore = useUserStore()
 
-
+const name = ref("")
+const surname = ref("")
 const email = ref("")
 const password = ref("")
+const re_password = ref("")
 
 const handle_submit = async () => {
 
 try {
 
-  const res = await userStore.access(email.value, password.value)
+  const res = await userStore.register(name.value, surname.value, email.value, password.value)
 
-  await userStore.access(email.value, password.value)
+  await userStore.access(name.value, surname.value, email.value, password.value)
 
   if(userStore.token){
 
@@ -128,8 +127,6 @@ try {
           "dangerouslyHTMLString": true
       })
 
-      password.value = ""
-
   }
 
     
@@ -148,5 +145,8 @@ h1{
   font-family: "Poppins", sans-serif !important;
   letter-spacing: 2px;
   font-weight: 800;
+}
+body{
+  overflow: hidden;
 }
 </style>

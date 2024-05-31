@@ -37,6 +37,37 @@ export const useUserStore = defineStore('user', () => {
       
       }
 
+      const register = async (name, surname, email, password) => {
+  
+        try {
+      
+          const res = await api.post('/register', {
+            
+            name,
+            surname,
+            email,
+            password
+          
+          })
+      
+          console.log(res.data)
+      
+          token.value = res.data.token
+
+          localStorage.setItem("user", "activo papi 😎")
+
+          refresh_token()
+
+          return res.data.msg
+          
+        } catch (e) {
+      
+          return e.response.data.error
+          
+        }
+      
+      }
+
       const logout = async () => {
 
         try {
@@ -90,6 +121,7 @@ export const useUserStore = defineStore('user', () => {
     return {
          token,   
          access,
+         register,
          refresh_token,
          key_token,
          refresh_token,

@@ -41,7 +41,7 @@
   
   
         <div>
-            <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#5BC8AC] rounded-lg hover:bg-[#1F3A93] transition-all">Login</button>
+            <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#5BC8AC] rounded-lg hover:bg-[#1F3A93] mt-3 transition-all">LOGIN</button>
         </div>
         
         <p class="text-center mt-[1em]">Don’t have an account ? <a class="text-blue-500 underline pounter" href="/register">Register</a></p>
@@ -89,7 +89,7 @@ const handle_submit = async () => {
         })
     
 
-      setTimeout(() => router.push('/dashboard'), 1000)
+      setTimeout(() => router.push('/dashboard'), 2000)
       
       setTimeout(() => email.value = "", 4000)
      
