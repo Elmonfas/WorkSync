@@ -32,6 +32,8 @@ const body_requests_validator = [
     body('requested_day', 'Formato de fecha deseada erroneo').trim().notEmpty(),
 
     body("message", 'Formato de mensaje erroneo').trim().notEmpty().isLength({min : 10}),
+
+    body('email', 'Formato de Email erroneo').trim().isEmail().normalizeEmail(),
     
     formValidation
 ]

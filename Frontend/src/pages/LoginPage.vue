@@ -41,7 +41,7 @@
   
   
         <div>
-            <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#5BC8AC] rounded-lg hover:bg-[#1F3A93] mt-3 transition-all">LOGIN</button>
+            <q-btn id="btn" type="submit" :loading=loading >LOGIN</q-btn>
         </div>
         
         <p class="text-center mt-[1em]">Don’t have an account ? <a class="text-blue-500 underline pounter" href="/register">Register</a></p>
@@ -69,16 +69,21 @@ const userStore = useUserStore()
 
 const email = ref("")
 const password = ref("")
+const loading = ref(false)
 
 const handle_submit = async () => {
 
   try {
 
+    loading.value = true
+
     const res = await userStore.access(email.value, password.value)
 
     await userStore.access(email.value, password.value)
 
-    if(userStore.token){
+    setTimeout( () => {
+
+      if(userStore.token){
 
         toast(res+ " 👋 !", {
             "theme": "colored",
@@ -86,28 +91,32 @@ const handle_submit = async () => {
             "position": "top-right",
             "autoClose": 2000,
             "dangerouslyHTMLString": true
-        })
-    
+            })
 
-      setTimeout(() => router.push('/dashboard'), 2000)
-      
-      setTimeout(() => email.value = "", 4000)
-     
-      setTimeout(() => password.value = "", 4000)
+        loading.value = false
 
-    }else {
+        setTimeout(() => router.push('/dashboard'), 2000)
+
+        setTimeout(() => email.value = "", 4000)
+
+        setTimeout(() => password.value = "", 4000)
+
+      }else {
 
         toast(res + " ✖️", {
             "theme": "colored",
             "type": "error",
             "autoClose": 3000,
             "dangerouslyHTMLString": true
-        })
+          })
+
+        loading.value = false
 
         password.value = ""
 
-    }
+      }
 
+    }, 1500)
       
     } catch (e) {
 
@@ -125,6 +134,23 @@ h1{
   font-family: "Poppins", sans-serif !important;
   letter-spacing: 2px;
   font-weight: 800;
+}
+
+#btn{
+  width: 100%;
+  color: white;
+  background: #5BC8AC;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-top: 1em;
+  transition: 300ms all ease-in-out;
+}
+
+#btn:hover{
+
+  background: #1F3A93;
+
 }
 
 </style>

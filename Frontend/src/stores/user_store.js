@@ -118,14 +118,36 @@ export const useUserStore = defineStore('user', () => {
         }
       }
 
+      const info_user = async () => {
+
+        try {
+
+          const res = await api({
+            method : 'GET',
+            url : '/protect',
+            headers : {
+            Authorization : 'Bearer ' + token.value
+            }
+        })
+
+          return(res.data.user.Nombre)
+          
+        } catch (e) {
+
+          console.log(e)
+          
+        }
+
+      }
+
     return {
          token,   
          access,
          register,
          refresh_token,
          key_token,
-         refresh_token,
-         logout
+         logout,
+         info_user
         }
     
 })

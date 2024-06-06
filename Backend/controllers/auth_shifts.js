@@ -4,7 +4,7 @@ const get_shifts = async (req, res) => {
 
     try {
 
-        const shifts = await con.query('SELECT shift_id, day,DAYNAME(shifts.day) AS day_of_week, start_time, end_time FROM shifts JOIN Users ON user_id = Users.ID WHERE Users.ID = ?', [req.uid])
+        const shifts = await con.query('SELECT shift_id, day,DAYNAME(shifts.day) AS day_of_week, start_time, end_time FROM shifts JOIN Users ON user_id = Users.ID WHERE Users.ID = ? ORDER BY day ASC', [req.uid])
 
         res.status(200).json({ shifts : shifts[0]})    
         

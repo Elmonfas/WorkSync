@@ -18,10 +18,10 @@ const register = async (req, res) => {
     const { name, surname, email, password } = req.body
     
     const user = {
-        name: name,
-        surname: surname,
-        email: email,
-        password: password
+        name,
+        surname,
+        email,
+        password
     }
 
     try {

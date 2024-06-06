@@ -6,25 +6,25 @@ import { ref } from "vue";
 
 import { useUserStore } from './user_store'
 
-export const useShiftsStore = defineStore('shift', () => {
+export const useRequetsStore = defineStore('request', () => {
 
     const user_store = useUserStore()
 
-    const get_shifts = async () => {
+    const get_requests = async () => {
 
         try {
 
             const res = await api({
                 method : 'GET',
-                url : '/shifts',
+                url : '/requests',
                 headers : {
                 Authorization : 'Bearer ' + user_store.token
                 }
             })
             
-            console.log(res.data.shifts)
+            console.log(res.data.requests[0])
 
-            return res.data.shifts
+            return res.data.requests
             
         } catch (e) {
 
@@ -34,46 +34,23 @@ export const useShiftsStore = defineStore('shift', () => {
 
     }
 
-    const create_shift = async (day, start_time, end_time) => {
+    const create_request = async (request_date, requested_day, message, email) => {
 
         try {
 
             const res = await api({
                 method : 'POST',
-                url : '/shifts',
+                url : '/requests',
                 headers : {
                 Authorization : 'Bearer ' + user_store.token
                 },
                 data:{
-                    day : day,
-                    start_time : start_time,
-                    end_time : end_time
+                    request_date,
+                    requested_day,
+                    message,
+                    email
                 }
             })
-            
-            console.log(res.data)
-
-            return res.data
-          
-        } catch (e) {
-        
-          console.log(e.response || e)
-          
-        }
-        
-        }
-
-
-    const delete_shift = async (id) => {
-
-        try {
-
-            const res = await api({
-                method : 'DELETE',
-                url : '/shifts/'+ id,
-                headers : {
-                Authorization : 'Bearer ' + user_store.token
-                }})
             
             console.log(res.data)
 
@@ -91,9 +68,8 @@ export const useShiftsStore = defineStore('shift', () => {
 
 
     return {
-        get_shifts,
-        create_shift,
-        delete_shift
+        get_requests,
+        create_request
         }
     
 })

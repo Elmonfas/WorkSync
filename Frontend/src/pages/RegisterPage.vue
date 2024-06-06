@@ -62,7 +62,7 @@
 
 
       <div>
-          <button id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#1F3A93] rounded-lg hover:bg-[#1F3A93] mt-3 transition-all">CREATE ACCOUNT</button>
+          <q-btn :loading=loading id="btn" type="submit" class="w-full py-2 text-xl text-white bg-[#1F3A93] rounded-lg hover:bg-[#1F3A93] mt-3 transition-all">CREATE ACCOUNT</q-btn>
       </div>
 
       <p class="text-center mt-[1em]">Already have an account ? <a class="text-blue-500 underline pounter" href="/login">Login</a></p>
@@ -92,16 +92,21 @@ const surname = ref("")
 const email = ref("")
 const password = ref("")
 const re_password = ref("")
+const loading = ref(false)
 
 const handle_submit = async () => {
 
 try {
+  
+  loading.value = true
 
   const res = await userStore.register(name.value, surname.value, email.value, password.value)
 
   await userStore.access(name.value, surname.value, email.value, password.value)
 
-  if(userStore.token){
+  setTimeout(() => {
+
+    if(userStore.token){
 
       toast(res+ " 👋 !", {
           "theme": "colored",
@@ -110,24 +115,31 @@ try {
           "autoClose": 2000,
           "dangerouslyHTMLString": true
       })
-  
 
-    setTimeout(() => router.push('/dashboard'), 3000)
-    
-    setTimeout(() => email.value = "", 4000)
-   
-    setTimeout(() => password.value = "", 4000)
+      loading.value = false
 
-  }else {
+      setTimeout(() => router.push('/dashboard'), 3000)
 
-      toast(res + " ✖️", {
-          "theme": "colored",
-          "type": "error",
-          "autoClose": 3000,
-          "dangerouslyHTMLString": true
-      })
+      setTimeout(() => email.value = "", 4000)
 
-  }
+      setTimeout(() => password.value = "", 4000)
+
+}else {
+
+    toast(res + " ✖️", {
+        "theme": "colored",
+        "type": "error",
+        "autoClose": 3000,
+        "dangerouslyHTMLString": true
+    })
+
+    loading.value = false
+
+}
+
+  }, 1500 )
+
+
 
     
   } catch (e) {
@@ -148,5 +160,21 @@ h1{
 }
 body{
   overflow: hidden;
+}
+#btn{
+  width: 100%;
+  color: white;
+  background: #1F3A93;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-top: 1em;
+  transition: 300ms all ease-in-out;
+}
+
+#btn:hover{
+
+  background: #5BC8AC;
+
 }
 </style>
