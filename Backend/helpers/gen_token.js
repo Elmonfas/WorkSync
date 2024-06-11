@@ -30,7 +30,8 @@ const generate_key_token = (uid, res) => {
         res.cookie("key_token", key_token, {
             httpOnly: true,
             secure: !(process.env.modo === "dev"),
-            expires : new Date(Date.now() + expiresIn * 1000)
+            expires : new Date(Date.now() + expiresIn * 1000),
+            sameSite: "none"
         })
         
     } catch (e) {
