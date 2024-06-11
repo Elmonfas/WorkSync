@@ -1,11 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <header class="flex h-[7vh] items-center justify-around bg-[#001220] w-full">
-      <a href="/"><img class="w-[9%]  cursor-pointer" src="../assets/WSYNC_png.png" alt=""></a> 
+      <a href="/"><img class="w-[7%]  cursor-pointer" src="../assets/WSYNC_png.png" alt=""></a> 
       <a  class=" enlace text-white  hover:text-[#5BC8AC]" href="/">Home</a>
       <a class=" enlace text-white  hover:text-[#5BC8AC]" href="/about">About</a>
       <a class=" enlace text-white  hover:text-[#5BC8AC]" href="/register" v-if="!user_store.token" >Register</a>
-      <a class=" enlace text-underline text-white  hover:text-[#5BC8AC]" href="/login" v-if="!user_store.token" >Acceder</a>
+      <a class=" enlace text-underline text-white  hover:text-[#5BC8AC]" href="/login" v-if="!user_store.token" >Login</a>
       <a class=" enlace text-underline text-white  hover:text-[#5BC8AC]" href="/dashboard" v-if="user_store.token" >Dashboard</a>
       <a class=" enlace text-underline text-white  hover:text-[#5BC8AC]" href="/" v-if="user_store.token" @click="user_store.logout" >Logout</a>
     </header>

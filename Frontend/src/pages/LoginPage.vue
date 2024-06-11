@@ -129,6 +129,9 @@ const handle_submit = async () => {
 </script>
 
 <style>
+body{
+  overflow: hidden;
+}
 
 h1{
   font-family: "Poppins", sans-serif !important;

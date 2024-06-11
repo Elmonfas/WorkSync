@@ -5,12 +5,12 @@
       <div class="absolute w-60 h-60 rounded-xl bg-[#1F3A93] top-14 -left-24 z-0 transform rotate-45  md:block"></div>
       <div class="absolute w-48 h-48 rounded-xl bg-[#1F3A93] -bottom-6 -right-10 transform rotate-12  md:block"></div>
 
-  <div class="w-1/3 py-8 px-8 bg-white rounded-2xl shadow-xl z-20 border-[4px] border-[#1F3A93]">
+  <div class="w-1/3 py-0 px-5 bg-white rounded-2xl shadow-xl z-20 border-[4px] border-[#1F3A93] mb-[3em] ">
       
 
       <div class="flex flex-col items-center justify-center">
-      <a class="flex items-center justify-center p-0 m-0 w-1/3" href="/"><img class="w-[100%]" src="../assets/WSYNC_png.png" alt=""></a>
-      <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Welcome to WorkSync 👋 !</h1>
+      <a class="flex items-center justify-center p-0 m-0 w-1/3" href="/"><img class="w-[80%]" src="../assets/WSYNC_png.png" alt=""></a>
+      <h1 class="text-2xl font-bold text-center mb-4 cursor-pointer">Welcome to WorkSync 👋 !</h1>
       <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Create a new account to enjoy all the services !</p>
     </div>
           <q-form 
@@ -111,7 +111,7 @@ try {
       toast(res+ " 👋 !", {
           "theme": "colored",
           "type": "success",
-          "position": "bottom-right",
+          "position": "top-right",
           "autoClose": 2000,
           "dangerouslyHTMLString": true
       })

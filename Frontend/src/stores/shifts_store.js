@@ -87,13 +87,43 @@ export const useShiftsStore = defineStore('shift', () => {
         
         }
 
+    const update_shift = async (id,day, start_time, end_time) => {
+
+        try {
+
+            const res = await api({
+                method : 'PATCH',
+                url : '/shifts/' + id,
+                headers : {
+                Authorization : 'Bearer ' + user_store.token
+                },
+                data:{
+                    day,
+                    start_time,
+                    end_time
+                }
+            })
+            
+            console.log(res.data)
+
+            return res.data
+          
+        } catch (e) {
+        
+          console.log(e.response || e)
+          
+        }
+
+    }
+
 
 
 
     return {
         get_shifts,
         create_shift,
-        delete_shift
+        delete_shift,
+        update_shift
         }
     
 })

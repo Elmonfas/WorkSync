@@ -4,21 +4,19 @@
             
             <div class="flex w-full h-[50vh]">
                 <div class="title p-0 m-0 w-1/2">
-                    <h1 class="kek animate__animated animate__fadeInTopLeft text-[#1F3A93] text-[15em] p-0 ml-[.7em] mt-[.8em] m-[-0.4em] flex items-center">WORK</h1>
+                    <h1 class="kek animate__animated animate__fadeInTopLeft text-[#1F3A93] text-[14em] p-0 ml-[.5em] mt-[.6em] m-[-0.4em] pb-[.2em] flex items-center">WORK</h1>
                     <hr class=" ray animate__animated animate__fadeIn border-[1px] broder-white w-1/2 ml-[17.2em] my-[10%] p-0">
-                    <h1 class="kek text-[#5BC8AC] text-[15em] -mt-[.1em] ml-[2em] p-0 m-0 animate__animated animate__fadeInBottomRight">SYNC</h1>
+                    <h1 class="kek text-[#5BC8AC] text-[14em] mt-[.4em] ml-[1.5em] p-0 m-0 animate__animated animate__fadeInBottomRight">SYNC</h1>
                 </div>
                 <div class="img w-1/2">
                     <img class=" w-[95%] rotate-3 animate__animated animate__slideInUp mia" src="../assets/Calendar-bro.png" alt="">
                 </div>
             </div>
             
-            <p class="w-[35%] text-[1.3em] ml-[7.7em] text-white mt-[7em] kek1 animate__animated animate__fadeInUp ">Convierte la gestión del personal en tienda en un acelerador de
-                crecimiento. Crea cada día la planificación más óptima, basada en la demanda e impulsada por inteligencia
-                artificial.</p>
+            <p class="w-[35%] text-[1.3em] ml-[7.7em] text-white mt-[7em] kek1 animate__animated animate__fadeInUp ">WorkSync is a web application designed to streamline schedule management and communication between employers and employees in work environments.</p>
             
                 <a
-                class="kek2 animate__animated animate__fadeInUp bg-[#1F3A93] w-[3cm] ml-[10em] mt-[2em] p-2 text-[#5BC8AC] text-bold rounded-[10px] text-center cursor-pointer" href="/login">Acceder</a>
+                class="kek2 animate__animated animate__fadeInUp bg-[#1F3A93] w-[3cm] ml-[10em] mt-[2em] p-2 text-[#5BC8AC] text-bold rounded-[10px] text-center cursor-pointer" href="/login">Login</a>
             </div>
             
             
