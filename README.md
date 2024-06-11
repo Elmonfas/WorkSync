@@ -29,7 +29,7 @@
 </ul>
 <p align="center">
 <a href="[https://skillicons.dev](https://skillicons.dev/)">
-<img src="https://skillicons.dev/icons?i=git,css,express,figma,github,html,js,mysql,vue,quasar,pinia,nodejs,tailwind,vscode&perline=14" />
+<img src="https://skillicons.dev/icons?i=git,css,express,figma,github,html,js,mysql,vue,npm,pinia,nodejs,tailwind,vscode&perline=14" />
 </a>
 </p>
 </div>
