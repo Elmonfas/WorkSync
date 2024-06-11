@@ -10,7 +10,7 @@
 
             <div v-if="shifts.length === 0" class="shift flex items-center justify-center rounded p-1 my-11" ><p class="text-[#001220] text-[1.5em] font-bold ">Add your work shifts to see them 📌</p></div>
         
-            <div class="shift bg-[#001220] flex items-center  rounded p-1 my-5" v-for="shift in shifts" :key="shift" >
+            <div class="shift bg-[#001220] flex items-center  rounded p-1 my-9" v-for="shift in shifts" :key="shift" >
 
 
         
@@ -18,7 +18,7 @@
             <h4 class="text-[2.5em] p-0 m-0">{{ shift.day.split('-')[2].split('T')[0] }}</h4>
             <h4 class="text-[2em] p-0 m-0 font-bold ">{{  shift.day_of_week.slice(0,3) }}</h4>  
         </div>
-            <p class="ml-[7%] text-[1.2em] font-semibold ">{{ shift.start_time.substring(0,5) }} - {{ shift.end_time.substring(0,5) }}</p>
+            <p class="ml-[7%] mt-5 text-[1.6em] font-semibold ">{{ shift.start_time.substring(0,5) }} - {{ shift.end_time.substring(0,5) }}</p>
         
             <div class="flex flex-col ml-12">
             <q-btn class="my-1 border-white" @click="open_editor(shift.shift_id)">✍🏻</q-btn>
